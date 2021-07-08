@@ -35,12 +35,12 @@ ACTIONS = ["la victime doit faire les lacets de l'assassin",
            "l'assassin et la victime doivent échanger de vêtement pendant au moins 5 mins",
            "la victime doit faire le sandwich de l'assassin",
            "la victime doit faire le lit de l'assassin",
-           "l'assassin doit convaincre la victime de manger de l'herbe (sans paris, sans forcer, etc)",
+           "l'assassin doit convaincre la victime de manger de l'herbe (sans paris, forcer, etc)",
            "l'assassin doit faire énoncer le théorème de Pythagore à sa victime",
            ]
 
 
-def generate(limit : int = -1):
+def generate(limit: int = -1):
     """return a list of type (assassin, victime, action) where assassin and victim
         are both tuple from (ANIMALS, COLORS, FRUITS). The length of the list is
         limit if given and limit > 0, 125 otherwise."""
@@ -59,16 +59,3 @@ def generate(limit : int = -1):
     cycle.append((identifiers[-1], identifiers[0], random.choice(ACTIONS)))
 
     return cycle
-
-
-def main(length : int = 3):
-    "print a textual representation of a cycle of given length (default 3)"
-    for assassin, victime, action in generate(limit=length):
-        print(f'{assassin = }')
-        print(f'{victime  = }')
-        print(f'{action   = }\n')
-
-
-if __name__ == "__main__":
-    import sys
-    main(3 if len(sys.argv) < 2 else int(sys.argv[1]))
